@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MicroRx.Operator
 {
@@ -48,12 +46,12 @@ namespace MicroRx.Operator
 
             public void OnError(Exception e)
             {
-
+                _Observer.OnError(e);
             }
 
             public void OnCompleted()
             {
-
+                _Observer.OnCompleted();
             }
         }
     }

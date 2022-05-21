@@ -17,12 +17,18 @@ namespace MicroRx
 
         public void OnError(Exception e)
         {
-
+            foreach (var observer in _Observers)
+            {
+                observer.OnError(e);
+            }
         }
 
         public void OnCompleted()
         {
-            
+            foreach(var observer in _Observers)
+            {
+                observer.OnCompleted();
+            }
         }
 
         public IDisposable Subscribe(IObserver<T> observer)

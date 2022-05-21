@@ -46,12 +46,12 @@
          
             public void OnCompleted()
             {
-
+                _Observer.OnCompleted();
             }
 
             public void OnError(System.Exception e)
             {
-
+                _Observer.OnError(e);
             }
         }
     }

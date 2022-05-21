@@ -1,5 +1,4 @@
 ﻿using System;
-using MicroRx;
 
 namespace MicroRx.Sample
 {
@@ -19,9 +18,11 @@ namespace MicroRx.Sample
 
             var disposable = num.Where(value => value % 2 == 0)
                 .Select(value => value *= 2)
-                .Subscribe(value => {
-                Console.WriteLine(value);
-            });
+                .Take(1)
+                .Subscribe(
+                value => {
+                    Console.WriteLine(value);
+                });
 
             num.Value = 1;
             num.Value = 2;
