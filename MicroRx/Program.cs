@@ -17,7 +17,9 @@ namespace MicroRx.Sample
         {
             var num = new ReactiveProperty<int>();
 
-            num.Where(value => value %2 == 0).Subscribe(value => {
+            var disposable = num.Where(value => value % 2 == 0)
+                .Select(value => value *= 2)
+                .Subscribe(value => {
                 Console.WriteLine(value);
             });
 
@@ -26,13 +28,7 @@ namespace MicroRx.Sample
             num.Value = 3;
             num.Value = 4;
 
-            var type = new ReactiveProperty<Type>(Type.A);
-
-            type.Subscribe(value => {
-                Console.WriteLine(value);
-            });
-
-            type.Value = Type.B;
+            disposable.Dispose();
         }
     }
 }

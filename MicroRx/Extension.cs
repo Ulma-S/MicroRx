@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using MicroRx.Operator;
 
 namespace MicroRx
@@ -15,6 +13,11 @@ namespace MicroRx
         public static IObservable<T> Where<T>(this IObservable<T> source, Func<T, bool> conditionalFunc)
         {
             return new WhereOperator<T>(source, conditionalFunc);
+        }
+
+        public static IObservable<T> Select<T>(this IObservable<T> source, Func<T, T> selectFunc)
+        {
+            return new SelectOperator<T>(source, selectFunc);
         }
     }
 }
